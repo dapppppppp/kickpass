@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/transactions_screen.dart';
 import 'screens/profile_screen.dart';
+import 'screens/buy_ticket_screen.dart'; // Impor halaman baru
 
 void main() {
   runApp(TiketCustomApp());
 }
 
 class TiketCustomApp extends StatelessWidget {
-  const TiketCustomApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,8 +24,6 @@ class TiketCustomApp extends StatelessWidget {
 }
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
-
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -36,6 +33,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     HomeScreen(),
+    BuyTicketScreen(), // Tambahkan halaman Buy Ticket
     TransactionsScreen(),
     ProfileScreen(),
   ];
@@ -56,18 +54,22 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.deepPurple,
         selectedItemColor: Colors.amber,
         unselectedItemColor: Colors.white,
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.receipt_long),
-            label: 'Transaksi Kita',
+            icon: Icon(Icons.add_shopping_cart),
+            label: 'Buy Ticket', // Label untuk menu Buy Ticket
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Profil',
+            icon: Icon(Icons.confirmation_num),
+            label: 'My Ticket', // Ubah label menjadi My Ticket
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
           ),
         ],
       ),
