@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: Colors.deepOrange,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -80,10 +80,10 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               itemCount: 4, // Misal 4 pertandingan
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+                crossAxisCount: 1,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
-                childAspectRatio: 3 / 2,
+                childAspectRatio: 5 / 2,
               ),
               itemBuilder: (BuildContext context, int index) {
                 return Card(
@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       gradient: LinearGradient(
-                        colors: [Colors.orangeAccent, Colors.deepOrange],
+                        colors: [Colors.blueGrey, Colors.blueAccent],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
