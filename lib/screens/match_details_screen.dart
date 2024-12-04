@@ -34,7 +34,7 @@ class MatchDetailsScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => TicketPurchaseScreen(),
+                      builder: (context) => const TicketPurchaseScreen(),
                     ),
                   );
                 },
@@ -48,7 +48,7 @@ class MatchDetailsScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => TicketPurchaseScreen(),
+                      builder: (context) => const TicketPurchaseScreen(),
                     ),
                   );
                 },

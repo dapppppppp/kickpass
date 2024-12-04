@@ -8,7 +8,7 @@ class TransactionsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Transaksi Kita'),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blue,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),

@@ -8,6 +8,8 @@ class HomeScreen extends StatelessWidget {
     'assets/images/banner3.jpg',
   ];
 
+  HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +17,12 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Text(
-                'Selamat Datang di Tiket Anda!',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                'KICKPASS',
+                style: TextStyle( fontSize: 24, fontWeight: FontWeight.bold, ),
+                textAlign: TextAlign.center,
               ),
             ),
             CarouselSlider(
@@ -29,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                   builder: (BuildContext context) {
                     return Container(
                       width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(horizontal: 5.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         image: DecorationImage(
@@ -42,8 +45,8 @@ class HomeScreen extends StatelessWidget {
                 );
               }).toList(),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Text(
                 'Pertandingan Terbaru',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -51,10 +54,10 @@ class HomeScreen extends StatelessWidget {
             ),
             GridView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               padding: const EdgeInsets.all(8.0),
               itemCount: 4, // Misal 4 pertandingan
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0, // Menambahkan jarak antar item secara vertikal
@@ -65,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'Pertandingan ${index + 1}', // Misal nama pertandingan
-                      style: TextStyle(fontSize: 18),
+                      style: const TextStyle(fontSize: 18),
                     ),
                   ),
                 );

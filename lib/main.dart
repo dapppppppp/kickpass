@@ -9,21 +9,26 @@ void main() {
 }
 
 class TiketCustomApp extends StatelessWidget {
+  const TiketCustomApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Tiket Custom',
       theme: ThemeData(
-        primaryColor: Colors.deepPurple,
-        hintColor: Colors.amber,
+        primaryColor: Colors.blue,
+        hintColor: Colors.lightBlue,
         fontFamily: 'Montserrat',
       ),
+      debugShowCheckedModeBanner: false,
       home: MainScreen(),
     );
   }
 }
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -34,8 +39,8 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     BuyTicketScreen(), // Tambahkan halaman Buy Ticket
-    TransactionsScreen(),
-    ProfileScreen(),
+    const TransactionsScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -52,9 +57,9 @@ class _MainScreenState extends State<MainScreen> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         backgroundColor: Colors.deepPurple,
-        selectedItemColor: Colors.amber,
-        unselectedItemColor: Colors.white,
-        items: [
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
