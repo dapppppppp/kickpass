@@ -19,14 +19,25 @@ class HomeScreen extends StatelessWidget {
           children: [
             const Padding(
               padding: EdgeInsets.all(16.0),
-              child: Text(
-                'KICKPASS',
-                style: TextStyle( fontSize: 24, fontWeight: FontWeight.bold, ),
-                textAlign: TextAlign.center,
+              child: Center(
+                child: Text(
+                  'KICKPASS',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.deepOrange,
+                  ),
+                ),
               ),
             ),
             CarouselSlider(
-              options: CarouselOptions(height: 200.0, autoPlay: true),
+              options: CarouselOptions(
+                height: 200.0,
+                autoPlay: true,
+                enlargeCenterPage: true,
+                aspectRatio: 16 / 9,
+                enableInfiniteScroll: true,
+              ),
               items: bannerImages.map((imagePath) {
                 return Builder(
                   builder: (BuildContext context) {
@@ -35,6 +46,13 @@ class HomeScreen extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(horizontal: 5.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 8.0,
+                            offset: Offset(0, 4),
+                          )
+                        ],
                         image: DecorationImage(
                           image: AssetImage(imagePath),
                           fit: BoxFit.cover,
@@ -49,7 +67,11 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.all(16.0),
               child: Text(
                 'Pertandingan Terbaru',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
               ),
             ),
             GridView.builder(
@@ -60,15 +82,43 @@ class HomeScreen extends StatelessWidget {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 10.0,
-                mainAxisSpacing: 10.0, // Menambahkan jarak antar item secara vertikal
+                mainAxisSpacing: 10.0,
+                childAspectRatio: 3 / 2,
               ),
               itemBuilder: (BuildContext context, int index) {
                 return Card(
                   elevation: 4,
-                  child: Center(
-                    child: Text(
-                      'Pertandingan ${index + 1}', // Misal nama pertandingan
-                      style: const TextStyle(fontSize: 18),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      gradient: LinearGradient(
+                        colors: [Colors.orangeAccent, Colors.deepOrange],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.sports_soccer,
+                            size: 48,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            'Pertandingan ${index + 1}',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
