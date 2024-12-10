@@ -125,13 +125,13 @@ class MatchDetailsScreen extends StatelessWidget {
                       runSpacing: 8.0,
                       children: [
                         _ticketCategoryWidget(
-                          "Tribun",
+                          "Tribun", // Kategori Tribun
                           match["price_tribun"] ?? "N/A",
                           "Stok: ${match["stock_tribun"] ?? "N/A"}",
                           context,
                         ),
                         _ticketCategoryWidget(
-                          "VIP",
+                          "VIP", // Kategori VIP
                           match["price_vip"] ?? "N/A",
                           "Stok: ${match["stock_vip"] ?? "N/A"}",
                           context,
@@ -191,11 +191,26 @@ class MatchDetailsScreen extends StatelessWidget {
               const SizedBox(height: 8),
               ElevatedButton(
                 onPressed: () {
-                  // Pindah ke halaman transaksi saat tombol beli diklik
+                  // Tentukan harga berdasarkan kategori yang dipilih
+                  String ticketPrice = category == "Tribun"
+                      ? match["price_tribun"] ??
+                          "N/A" // Gunakan harga untuk Tribun
+                      : match["price_vip"] ?? "N/A"; // Gunakan harga untuk VIP
+
+                  // Pindah ke halaman transaksi dengan data yang diteruskan
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const TicketPurchaseScreen(),
+                      builder: (context) => TicketPurchaseScreen(
+                        title: match["title"] ??
+                            "N/A", // Mengambil title pertandingan
+                        date: match["date"] ??
+                            "N/A", // Mengambil tanggal pertandingan
+                        time: match["time"] ??
+                            "N/A", // Mengambil waktu pertandingan
+                        price: ticketPrice, // Mengambil harga sesuai kategori
+                        category: category, // Menambahkan kategori yang dipilih
+                      ),
                     ),
                   );
                 },
