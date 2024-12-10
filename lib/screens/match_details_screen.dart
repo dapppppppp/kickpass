@@ -2,61 +2,213 @@ import 'package:flutter/material.dart';
 import 'ticket_purchase_screen.dart';
 
 class MatchDetailsScreen extends StatelessWidget {
-  const MatchDetailsScreen({super.key});
+  final Map<String, String> match;
+
+  const MatchDetailsScreen({super.key, required this.match});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail Pertandingan'),
+        title: Text(match["title"] ?? "Detail Pertandingan"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Persija vs Persib',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            const Text('Tanggal: 10 Nov 2024'),
-            const Text('Lokasi: Stadion GBK'),
-            const SizedBox(height: 16),
-            const Text(
-              'Pilih kategori tempat duduk:',
-              style: TextStyle(fontSize: 18),
-            ),
-            ListTile(
-              title: const Text('Tribun - Rp 50.000'),
-              trailing: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const TicketPurchaseScreen(),
-                    ),
-                  );
-                },
-                child: const Text('Beli'),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.network(
+                match["banner"] ?? "",
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.cover,
               ),
-            ),
-            ListTile(
-              title: const Text('VIP - Rp 150.000'),
-              trailing: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const TicketPurchaseScreen(),
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'images/Logo.png',
+                        width: 100,
+                        height: 100,
+                      ),
                     ),
-                  );
-                },
-                child: const Text('Beli'),
+                    const SizedBox(height: 16),
+                    const Divider(),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Lokasi'),
+                        Text(match["location"] ?? "N/A"),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Tanggal'),
+                        Text(match["date"] ?? "N/A"),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Waktu'),
+                        Text(match["time"] ?? "N/A"),
+                      ],
+                    ),
+                    const Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              match["title"]?.split(" vs ")[0] ?? "Team 1",
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Image.network(
+                              match["team1_logo"] ?? "",
+                              width: 90,
+                              height: 90,
+                            ),
+                          ],
+                        ),
+                        const Text(
+                          "VS",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              match["title"]?.split(" vs ")[1] ?? "Team 2",
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Image.network(
+                              match["team2_logo"] ?? "",
+                              width: 90,
+                              height: 90,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const Divider(),
+                    const Text(
+                      'Pilih kategori tempat duduk:',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    const SizedBox(height: 8),
+                    Wrap(
+                      spacing: 8.0,
+                      runSpacing: 8.0,
+                      children: [
+                        _ticketCategoryWidget(
+                          "Tribun",
+                          match["price_tribun"] ?? "N/A",
+                          "Stok: ${match["stock_tribun"] ?? "N/A"}",
+                          context,
+                        ),
+                        _ticketCategoryWidget(
+                          "VIP",
+                          match["price_vip"] ?? "N/A",
+                          "Stok: ${match["stock_vip"] ?? "N/A"}",
+                          context,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+      ),
+    );
+  }
+
+  Widget _ticketCategoryWidget(
+      String category, String price, String stock, BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                category,
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                price,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green,
+                ),
+              ),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '$stock tersisa',
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.red,
+                ),
+              ),
+              const SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: () {
+                  // Pindah ke halaman transaksi saat tombol beli diklik
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TicketPurchaseScreen(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF426BDE),
+                  minimumSize: Size(150, 50),
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text('Beli'),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
