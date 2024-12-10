@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/transactions_screen.dart';
 import 'screens/profile_screen.dart';
-import 'screens/buy_ticket_screen.dart'; // Impor halaman baru
+import 'screens/buy_ticket_screen.dart';
 
 void main() {
   runApp(TiketCustomApp());
@@ -38,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     HomeScreen(),
-    BuyTicketScreen(), // Tambahkan halaman Buy Ticket
+    BuyTicketScreen(), 
     const TransactionsScreen(),
     const ProfileScreen(),
   ];
@@ -66,11 +66,11 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_shopping_cart),
-            label: 'Buy Ticket', // Label untuk menu Buy Ticket
+            label: 'Buy Ticket',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.confirmation_num),
-            label: 'My Ticket', // Ubah label menjadi My Ticket
+            label: 'My Ticket',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

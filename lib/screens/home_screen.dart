@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:kickpass/list/ticket_list.dart';
+import 'package:kickpass/screens/match_details_screen.dart'; // Import ticket_list.dart
 
 class HomeScreen extends StatelessWidget {
-  final List<String> bannerImages = [
-    'assets/images/banner1.jpg',
-    'assets/images/banner2.jpg',
-    'assets/images/banner3.jpg',
-  ];
-
   HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Use the imported ticketList directly
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.all(16.0),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16.0),
+              color: Colors.blue,
               child: Center(
-                child: Text(
-                  'KICKPASS',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+                child: Image.asset(
+                  'assets/images/Logo2.png',
+                  height: 100,
+                  width: 100,
                 ),
               ),
             ),
+            const SizedBox(height: 20),
             CarouselSlider(
               options: CarouselOptions(
                 height: 200.0,
@@ -38,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                 aspectRatio: 16 / 9,
                 enableInfiniteScroll: true,
               ),
-              items: bannerImages.map((imagePath) {
+              items: ticketList.map((ticket) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
@@ -54,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                           )
                         ],
                         image: DecorationImage(
-                          image: AssetImage(imagePath),
+                          image: NetworkImage(ticket["banner"] ?? ""),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -68,17 +65,19 @@ class HomeScreen extends StatelessWidget {
               child: Text(
                 'Pertandingan Terbaru',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.blue,
                 ),
               ),
             ),
+            // GridView untuk menampilkan pertandingan
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               padding: const EdgeInsets.all(8.0),
-              itemCount: 4, // Misal 4 pertandingan
+              itemCount:
+                  ticketList.length, // Menggunakan jumlah pertandingan yang ada
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
                 crossAxisSpacing: 10.0,
@@ -86,31 +85,54 @@ class HomeScreen extends StatelessWidget {
                 childAspectRatio: 5 / 2,
               ),
               itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      gradient: LinearGradient(
-                        colors: [Colors.blueGrey, Colors.blueAccent],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
+                final ticket = ticketList[index]; // Ambil data ticket
+
+                return GestureDetector(
+                  onTap: () {
+                    // Pindah ke halaman MatchDetailsScreen saat Card di-tap
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MatchDetailsScreen(
+                          match: ticket,
+                        ),
                       ),
+                    );
+                  },
+                  child: Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        gradient: LinearGradient(
+                          colors: [Colors.blueGrey, Colors.blueAccent],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                      ),
                       child: Column(
-                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
-                            Icons.sports_soccer,
-                            size: 48,
-                            color: Colors.white,
+                          // Banner Image
+                          Container(
+                            width: double.infinity,
+                            height: 150.0, // Adjust the height of the banner
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: DecorationImage(
+                                image: NetworkImage(ticket["banner"] ?? ""),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
+                          const SizedBox(
+                              height:
+                                  8.0), // Add space between banner and title
+                          // Match Title
                           Text(
-                            'Pertandingan ${index + 1}',
+                            ticket["title"] ?? 'Pertandingan ${index + 1}',
                             style: const TextStyle(
                               fontSize: 18,
                               color: Colors.white,
