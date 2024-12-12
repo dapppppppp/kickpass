@@ -1,7 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:kickpass/Auth/Login_screen.dart';
+import 'package:kickpass/list/user_details.dart';
+import 'package:kickpass/screens/face_detection_screen.dart';
+import 'package:kickpass/screens/profile_details_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
+
+  // Fungsi untuk menampilkan dialog konfirmasi logout
+  Future<void> _showLogoutDialog(BuildContext context) async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Konfirmasi Logout'),
+          content: Text('Apakah Anda yakin ingin logout?'),
+          actions: [
+            // Tombol Tidak
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Tidak', style: TextStyle(color: Colors.blue)),
+            ),
+            // Tombol Iya
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+              },
+              child: Text(
+                'Iya',
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,44 +60,79 @@ class ProfileScreen extends StatelessWidget {
               backgroundImage: AssetImage('assets/images/user_photo.png'),
             ),
             const SizedBox(height: 16),
-            const Text(
-              'user1',
+            Text(
+              user.name,
               style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
             ),
-            const Text('Member Access', style: TextStyle(color: Colors.grey)),
-            const SizedBox(height: 20),
+            Text(
+              user.username,
+              style: TextStyle(color: Colors.grey),
+            ),
+            SizedBox(height: 20),
             Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
               elevation: 3,
-              child: const ListTile(
-                leading: Icon(Icons.phone, color: Colors.blue),
-                title: Text('Nomor Telepon'),
-                subtitle: Text('+628123456789'),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ProfileDetailsScreen()),
+                  );
+                },
+                child: const ListTile(
+                  leading: Icon(Icons.settings, color: Colors.blue),
+                  title: Text('Setelan'),
+                  subtitle: Text(
+                    'Atur profilmu disini',
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ),
               ),
             ),
             Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
               elevation: 3,
-              child: const ListTile(
-                leading: Icon(Icons.camera, color: Colors.blue),
-                title: Text('Face Recognition'),
-                subtitle: Text('Belum Terdaftar'),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FaceDetectionScreen()),
+                  );
+                },
+                child: const ListTile(
+                  leading: Icon(Icons.camera_alt, color: Colors.blue),
+                  title: Text('Deteksi wajah'),
+                  subtitle: Text(
+                    'Aktifkan fitur deteksi wajah disini',
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 16),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 239, 77, 65),
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
               onPressed: () {
-                // Tambahkan fungsi logout
+                // Tampilkan dialog konfirmasi logout
+                _showLogoutDialog(context);
               },
               icon: const Icon(Icons.logout),
-              label: const Text('Logout', style: TextStyle(color: Colors.white),
+              label: const Text(
+                'Logout',
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ],
