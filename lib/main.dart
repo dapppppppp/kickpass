@@ -38,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     HomeScreen(),
-    BuyTicketScreen(), 
+    BuyTicketScreen(),
     const TransactionsScreen(),
     const ProfileScreen(),
   ];
@@ -62,19 +62,19 @@ class _MainScreenState extends State<MainScreen> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Beranda',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_shopping_cart),
-            label: 'Buy Ticket',
+            label: 'Beli Tiket',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.confirmation_num),
-            label: 'My Ticket',
+            label: 'Tiket Saya',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Profil',
           ),
         ],
       ),
