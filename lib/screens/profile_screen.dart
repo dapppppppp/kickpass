@@ -4,6 +4,14 @@ import 'package:kickpass/list/user_details.dart';
 import 'package:kickpass/screens/face_detection_screen.dart';
 import 'package:kickpass/screens/profile_details_screen.dart';
 
+// Untuk mengakses Login Page, caranya:
+// 1. Logout dulu
+// 2. Login belum ada konfigurasinya, jadi hanya untuk pindah ke halaman Gate Keeper
+// 3. Username = penjaga
+// 4. Password = 12345
+// Sekali lagi, login hanya untuk pindah ke halaman Gate Keeper
+// Karena aku ngak tau mau ditaruh mana, sekian, terima kasih
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -50,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
         title: const Text('Profil'),
         backgroundColor: Colors.blue,
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
