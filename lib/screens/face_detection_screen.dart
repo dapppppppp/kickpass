@@ -29,10 +29,10 @@ class _FaceDetectionScreenState extends State<FaceDetectionScreen> {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Switch(
-                  value: isSwitchOn, // Menggunakan nilai isSwitchOn
+                  value: isSwitchOn, 
                   onChanged: (bool value) {
                     setState(() {
-                      isSwitchOn = value; // Mengubah status switch
+                      isSwitchOn = value; 
                     });
                   },
                   activeColor: Colors.blue,
@@ -50,10 +50,9 @@ class _FaceDetectionScreenState extends State<FaceDetectionScreen> {
 
             const SizedBox(height: 16),
 
-            // Kotak Kamera dengan garis penuh kiri ke kanan
             Center(
               child: Container(
-                width: double.infinity, // Membuat kotak mengisi lebar penuh
+                width: double.infinity,
                 height: 200,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey, width: 2),
@@ -62,7 +61,7 @@ class _FaceDetectionScreenState extends State<FaceDetectionScreen> {
                 child: Center(
                   child: IconButton(
                     icon: Icon(Icons.camera_alt,
-                        size: 100, color: Colors.grey), // Ikon lebih besar
+                        size: 100, color: Colors.grey),
                     onPressed: () {
                       // Handle camera click here
                     },
