@@ -1,16 +1,31 @@
-# kickpass
+# Kickpass
 
-A new Flutter project.
+Kickpass adalah aplikasi mobile yang memungkinkan pengguna untuk membeli tiket pertandingan sepak bola secara mudah dan praktis. Aplikasi ini dilengkapi dengan fitur Face Recognition, yang memungkinkan verifikasi identitas pengguna saat memasuki stadion untuk memastikan keamanan dan kenyamanan. Dengan Kickpass, pengguna dapat membeli tiket, menyimpan tiket digital, dan mengaksesnya dengan cepat menggunakan pemindaian wajah, memberikan pengalaman yang lebih aman dan efisien dalam menghadiri pertandingan sepak bola.
 
-## Getting Started
+## Anggota TI-3D
 
-This project is a starting point for a Flutter application.
+* Daffa Reyhansyah Ahmad
+* Dyinastie Marchelina Puspitawening
+* Mohamad Fikry Aljufri
+* Raden Ariq Resya Alaudin
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Koneksi
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* BackEnd : 
+    https://github.com/dapppppppp/backkickpass
+
+* Machine Learning Model : 
+    https://github.com/Dyinastie/Machine_Learning/blob/main/ML_Face_Recognition.ipynb
+
+---
+
+### Cara Login
+
+1. Logout dulu
+2. Login belum ada konfigurasinya, jadi hanya untuk pindah ke halaman Gate Keeper
+3. Username = penjaga
+4. Password = 12345
+5. Sekali lagi, login hanya untuk pindah ke halaman Gate Keeper
+6. FrontEnd mengalami kebingungan meletakkan page user dan gate keeper, MOHON DIREVISI
