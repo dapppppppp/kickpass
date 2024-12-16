@@ -16,7 +16,7 @@ class TiketCustomApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tiket Custom',
       theme: ThemeData(
-        primaryColor: Colors.blue,
+        primaryColor: Color(0xFF426BDE),
         hintColor: Colors.lightBlue,
         fontFamily: 'Montserrat',
       ),
@@ -57,7 +57,7 @@ class _MainScreenState extends State<MainScreen> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         backgroundColor: Colors.deepPurple,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Color(0xFF426BDE),
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
@@ -74,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profil',
+            label: 'Profil Saya',
           ),
         ],
       ),

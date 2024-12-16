@@ -13,7 +13,6 @@ class _FaceDetectionScreenState extends State<FaceDetectionScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Deteksi Wajah'),
-        backgroundColor: Colors.blue,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -29,13 +28,13 @@ class _FaceDetectionScreenState extends State<FaceDetectionScreen> {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Switch(
-                  value: isSwitchOn, 
+                  value: isSwitchOn,
                   onChanged: (bool value) {
                     setState(() {
-                      isSwitchOn = value; 
+                      isSwitchOn = value;
                     });
                   },
-                  activeColor: Colors.blue,
+                  activeColor: Color(0xFF426BDE),
                 ),
               ],
             ),
@@ -60,8 +59,7 @@ class _FaceDetectionScreenState extends State<FaceDetectionScreen> {
                 ),
                 child: Center(
                   child: IconButton(
-                    icon: Icon(Icons.camera_alt,
-                        size: 100, color: Colors.grey),
+                    icon: Icon(Icons.camera_alt, size: 100, color: Colors.grey),
                     onPressed: () {
                       // Handle camera click here
                     },

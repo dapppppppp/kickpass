@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kickpass/Auth/login_screen.dart';
 import 'package:kickpass/gatekeeper/scan_details_screen.dart';
 import 'package:kickpass/list/ticket_list.dart';
 
@@ -32,12 +33,70 @@ class _ScanPageState extends State<ScanPage> {
     });
   }
 
+  // Fungsi untuk menampilkan dialog konfirmasi logout
+  Future<void> _showLogoutDialog(BuildContext context) async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Konfirmasi Logout'),
+          content: Text('Apakah Anda yakin ingin logout?'),
+          actions: [
+            // Tombol Tidak
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Tidak', style: TextStyle(color: Color(0xFF426BDE))),
+            ),
+            // Tombol Iya
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+              },
+              child: Text(
+                'Iya',
+                style: TextStyle(color: Color(0xFF426BDE)),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Scan Tiket'),
-        backgroundColor: Colors.blue,
+        title: const Text('Scan Tiket', style: TextStyle(color: Colors.white)),
+        backgroundColor: Color(0xFF426BDE),
+        actions: [
+          ElevatedButton.icon(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            onPressed: () {
+              // Tampilkan dialog konfirmasi logout
+              _showLogoutDialog(context);
+            },
+            icon: const Icon(Icons.logout),
+            label: const Text(
+              'Logout',
+              style: TextStyle(color: Color(0xFF426BDE)),
+            ),
+          ),
+          const SizedBox(
+              width: 16), // Memberikan jarak antara tombol dan tepi kanan
+        ],
       ),
       body: Column(
         children: [

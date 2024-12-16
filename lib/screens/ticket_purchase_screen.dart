@@ -201,7 +201,8 @@ class TicketPurchaseScreen extends StatelessWidget {
                               Navigator.pop(context);
                               Navigator.pop(context);
                             },
-                            child: const Text('OK'),
+                            child: const Text('OK',
+                                style: TextStyle(color: Color(0xFF426BDE))),
                           ),
                         ],
                       ),

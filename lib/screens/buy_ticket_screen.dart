@@ -36,8 +36,8 @@ class _BuyTicketScreenState extends State<BuyTicketScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Beli Tiket'),
-        backgroundColor: Colors.blue,
+        title: const Text('Beli Tiket', style: TextStyle(color: Colors.white)),
+        backgroundColor: Color(0xFF426BDE),
       ),
       body: Column(
         children: [

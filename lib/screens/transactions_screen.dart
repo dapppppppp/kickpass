@@ -9,8 +9,10 @@ class TransactionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(title: const Text('Tiket Saya'), backgroundColor: Colors.blue),
+      appBar: AppBar(
+          title:
+              const Text('Tiket Saya', style: TextStyle(color: Colors.white)),
+          backgroundColor: Color(0xFF426BDE)),
       body: ListView.builder(
         itemCount: transactionList.length,
         itemBuilder: (context, index) {

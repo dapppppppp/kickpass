@@ -5,10 +5,7 @@ class ProfileDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detail Profil'),
-        backgroundColor: Colors.blue,
-      ),
+      appBar: AppBar(title: const Text('Detail Profil')),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -48,7 +45,7 @@ class ProfileDetailsScreen extends StatelessWidget {
                 },
                 child: const Text(
                   'Ubah',
-                  style: TextStyle(color: Colors.blue),
+                  style: TextStyle(color: Color(0xFF426BDE)),
                 ),
               ),
             ],

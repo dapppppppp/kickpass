@@ -54,7 +54,7 @@ class _ScanDetailsScreenState extends State<ScanDetailsScreen> {
                   // Lokasi
                   Row(
                     children: [
-                      const Icon(Icons.location_on, color: Colors.blue),
+                      const Icon(Icons.location_on, color: Color(0xFF426BDE)),
                       const SizedBox(width: 8),
                       Text(widget.match['location']!),
                     ],
@@ -63,7 +63,7 @@ class _ScanDetailsScreenState extends State<ScanDetailsScreen> {
                   // Tanggal
                   Row(
                     children: [
-                      const Icon(Icons.date_range, color: Colors.blue),
+                      const Icon(Icons.date_range, color: Color(0xFF426BDE)),
                       const SizedBox(width: 8),
                       Text(widget.match['date']!),
                     ],
@@ -72,7 +72,7 @@ class _ScanDetailsScreenState extends State<ScanDetailsScreen> {
                   // Jam
                   Row(
                     children: [
-                      const Icon(Icons.access_time, color: Colors.blue),
+                      const Icon(Icons.access_time, color: Color(0xFF426BDE)),
                       const SizedBox(width: 8),
                       Text(widget.match['time']!),
                     ],

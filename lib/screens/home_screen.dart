@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(16.0),
-              color: Colors.blue,
+              color: Color(0xFF426BDE),
               child: Center(
                 child: Image.asset(
                   'assets/images/Logo2.png',
@@ -67,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue,
+                  color: Color(0xFF426BDE),
                 ),
               ),
             ),
@@ -89,7 +89,7 @@ class HomeScreen extends StatelessWidget {
 
                 return GestureDetector(
                   onTap: () {
-                    // Pindah ke halaman MatchDetailsScreen saat Card di-tap
+                    // Pindah ke halaman MatchDetailsScreen
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -108,7 +108,7 @@ class HomeScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         gradient: LinearGradient(
-                          colors: [Colors.blueGrey, Colors.blueAccent],
+                          colors: [Colors.blueGrey, Color(0xFF426BDE)],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),

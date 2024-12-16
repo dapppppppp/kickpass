@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Tidak', style: TextStyle(color: Colors.blue)),
+              child: Text('Tidak', style: TextStyle(color: Color(0xFF426BDE))),
             ),
             // Tombol Iya
             TextButton(
@@ -42,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
               },
               child: Text(
                 'Iya',
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(color: Color(0xFF426BDE)),
               ),
             ),
           ],
@@ -55,8 +55,8 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profil'),
-        backgroundColor: Colors.blue,
+        title: const Text('Profil Saya', style: TextStyle(color: Colors.white)),
+        backgroundColor: Color(0xFF426BDE),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -91,7 +91,7 @@ class ProfileScreen extends StatelessWidget {
                   );
                 },
                 child: const ListTile(
-                  leading: Icon(Icons.settings, color: Colors.blue),
+                  leading: Icon(Icons.settings, color: Color(0xFF426BDE)),
                   title: Text('Setelan'),
                   subtitle: Text(
                     'Atur profilmu disini',
@@ -114,7 +114,7 @@ class ProfileScreen extends StatelessWidget {
                   );
                 },
                 child: const ListTile(
-                  leading: Icon(Icons.camera_alt, color: Colors.blue),
+                  leading: Icon(Icons.camera_alt, color: Color(0xFF426BDE)),
                   title: Text('Deteksi wajah'),
                   subtitle: Text(
                     'Aktifkan fitur deteksi wajah disini',
