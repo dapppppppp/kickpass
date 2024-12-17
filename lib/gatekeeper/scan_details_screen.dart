@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:kickpass/gatekeeper/get_user_screen.dart';
 import 'package:kickpass/list/transaction_list.dart';
 
@@ -14,6 +17,18 @@ class ScanDetailsScreen extends StatefulWidget {
 class _ScanDetailsScreenState extends State<ScanDetailsScreen> {
   // Menyimpan kode tiket yang dimasukkan
   String enteredCode = '';
+  File? _image;
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    final PickedFile? pickedFile =
+        await _picker.getImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,15 +116,17 @@ class _ScanDetailsScreenState extends State<ScanDetailsScreen> {
                       border: Border.all(color: Colors.grey, width: 2),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Center(
-                      child: IconButton(
-                        icon: const Icon(Icons.camera_alt,
-                            size: 100, color: Colors.grey),
-                        onPressed: () {
-                          // Handle camera click here
-                        },
-                      ),
-                    ),
+                    child: _image == null
+                        ? Center(
+                            child: IconButton(
+                              icon: Icon(Icons.camera_alt,
+                                  size: 100, color: Colors.grey),
+                              onPressed: () {
+                                _pickImage();
+                              },
+                            ),
+                          )
+                        : Image.file(_image!),
                   ),
                 ),
               ],
