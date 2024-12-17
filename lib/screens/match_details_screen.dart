@@ -18,13 +18,6 @@ class MatchDetailsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.network(
-                match["banner"] ?? "",
-                width: double.infinity,
-                height: 200,
-                fit: BoxFit.cover,
-              ),
-              const SizedBox(height: 16),
               Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
