@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kickpass/Auth/Register_screen.dart';
 import 'package:kickpass/gatekeeper/scan_screen.dart';
 import 'package:kickpass/list/gatekeeper_details.dart';
+import 'package:kickpass/list/user_details.dart';
+import 'package:kickpass/main.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -15,8 +18,15 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscurePassword = true;
 
   // Fungsi untuk memeriksa login
-  bool checkLogin(String username, String password) {
-    return username == gatekeeper.username && password == gatekeeper.password;
+  String? checkLogin(String username, String password) {
+    // return username == gatekeeper.username && password == gatekeeper.password;
+    if (username == gatekeeper.username && password == gatekeeper.password){
+      return gatekeeper.role;
+    }
+    else if (username == user.username && password == user.password){
+      return user.role;
+    }
+    return null;
   }
 
   @override
@@ -112,18 +122,24 @@ class _LoginPageState extends State<LoginPage> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
+                        String? role = checkLogin(username, password);
                         // Cek login dengan username dan password
-                        if (checkLogin(username, password)) {
+                        if (role != null) {
                           // Jika login berhasil
                           ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Login Successful')));
                           // Navigasi ke halaman Beranda Penjaga
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ScanPage(),
-                            ),
-                          );
+                          if (role == 'user') {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => MainScreen()),
+                            );
+                          } else if (role == 'gatekeeper') {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => ScanPage()),
+                            );
+                          }
                         } else {
                           // Jika login gagal
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(

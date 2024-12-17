@@ -5,14 +5,16 @@ class UserDetails {
   String username;
   String password;
   String photo;
+  String role;
 
-  UserDetails(name, email, phone, username, password, photo)
+  UserDetails(name, email, phone, username, password, photo, role)
       : name = name,
         email = email,
         phone = phone,
         username = username,
         password = password,
-        photo = photo;
+        photo = photo,
+        role = role;
 }
 
 // Contoh instansiasi data pengguna langsung
@@ -23,4 +25,5 @@ UserDetails user = UserDetails(
   'muniff',
   'password123',
   'https://example.com/photo.jpg',
+  'user',
 );
