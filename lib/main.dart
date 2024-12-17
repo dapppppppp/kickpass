@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kickpass/screens/splash_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/transactions_screen.dart';
 import 'screens/profile_screen.dart';
@@ -21,8 +22,34 @@ class TiketCustomApp extends StatelessWidget {
         fontFamily: 'Montserrat',
       ),
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      home: SplashScreenLoader(),
     );
+  }
+}
+
+class SplashScreenLoader extends StatefulWidget {
+  const SplashScreenLoader({super.key});
+
+  @override
+  _SplashScreenLoaderState createState() => _SplashScreenLoaderState();
+}
+
+class _SplashScreenLoaderState extends State<SplashScreenLoader> {
+  @override
+  void initState() {
+    super.initState();
+    // Navigasikan ke MainScreen setelah beberapa detik
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const MainScreen()),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen();
   }
 }
 

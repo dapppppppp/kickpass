@@ -36,7 +36,7 @@ class MatchDetailsScreen extends StatelessWidget {
                   children: [
                     Center(
                       child: Image.asset(
-                        'images/Logo.png',
+                        'assets/images/Logo.png',
                         width: 100,
                         height: 100,
                       ),
