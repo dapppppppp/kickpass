@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class FaceDetectionScreen extends StatefulWidget {
   @override
@@ -7,6 +10,18 @@ class FaceDetectionScreen extends StatefulWidget {
 
 class _FaceDetectionScreenState extends State<FaceDetectionScreen> {
   bool isSwitchOn = false;
+  File? _image;
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    final PickedFile? pickedFile =
+        await _picker.getImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +72,17 @@ class _FaceDetectionScreenState extends State<FaceDetectionScreen> {
                   border: Border.all(color: Colors.grey, width: 2),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Center(
-                  child: IconButton(
-                    icon: Icon(Icons.camera_alt, size: 100, color: Colors.grey),
-                    onPressed: () {
-                      // Handle camera click here
-                    },
-                  ),
-                ),
+                child: _image == null
+                    ? Center(
+                        child: IconButton(
+                          icon: Icon(Icons.camera_alt,
+                              size: 100, color: Colors.grey),
+                          onPressed: () {
+                            _pickImage();
+                          },
+                        ),
+                      )
+                    : Image.file(_image!),
               ),
             ),
           ],
