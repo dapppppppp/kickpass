@@ -1,7 +1,7 @@
 final List<Map<String, String>> transactionList = [
   {
     "id_transaksi": "12345678",
-    "title": "Team A vs Team B",
+    "title": "Manchester United vs Manchester City",
     "date": "22 Desember 2024",
     "time": "18:00 WIB",
     "location": "Stadion Utama",
@@ -12,7 +12,7 @@ final List<Map<String, String>> transactionList = [
   },
   {
     "id_transaksi": "87654321",
-    "title": "Team C vs Team D",
+    "title": "Liverpool vs Juventus FC",
     "date": "20 Desember 2024",
     "time": "20:00 WIB",
     "location": "Stadion Merdeka",
@@ -23,7 +23,7 @@ final List<Map<String, String>> transactionList = [
   },
   {
     "id_transaksi": "34512687",
-    "title": "Team E vs Team F",
+    "title": "Barcelona vs Paris Saint German",
     "date": "10 Desember 2024",
     "time": "16:00 WIB",
     "location": "Stadion Jaya Raya",

@@ -57,8 +57,8 @@ flutter:
     - assets/fonts/Montserrat-Bold.ttf
     - assets/fonts/Montserrat-Medium.ttf
     - assets/fonts/Montserrat-Regular.ttf
-    - assets/images/Logo.png
-    - assets/images/Logo2.png
+    - assets/images/
+
 
   fonts:
     - family: Montserrat
