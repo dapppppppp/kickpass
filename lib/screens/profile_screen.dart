@@ -147,7 +147,7 @@ class ProfileScreen extends StatelessWidget {
                 // Tampilkan dialog konfirmasi logout
                 _showLogoutDialog(context);
               },
-              icon: const Icon(Icons.logout),
+              icon: const Icon(Icons.logout, color: Colors.white),
               label: const Text(
                 'Logout',
                 style: TextStyle(color: Colors.white),
