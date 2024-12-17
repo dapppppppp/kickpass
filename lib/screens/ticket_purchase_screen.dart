@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kickpass/list/ticket_list.dart';
 import 'package:kickpass/list/user_details.dart';
+import 'package:kickpass/screens/ticket_qris_screen.dart';
 
 class TicketPurchaseScreen extends StatelessWidget {
   final String title;
@@ -188,23 +189,14 @@ class TicketPurchaseScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text('Pembayaran Berhasil'),
-                        content:
-                            const Text('Tiket telah tersimpan di profil Anda.'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            },
-                            child: const Text('OK',
-                                style: TextStyle(color: Color(0xFF426BDE))),
-                          ),
-                        ],
+                    // Arahkan ke halaman QRIS
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TicketQrisScreen(
+                          title: title,
+                          price: price,
+                        ),
                       ),
                     );
                   },
