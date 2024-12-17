@@ -3,6 +3,8 @@ import 'package:kickpass/Auth/Login_screen.dart';
 import 'package:kickpass/list/user_details.dart';
 import 'package:kickpass/screens/face_detection_screen.dart';
 import 'package:kickpass/screens/profile_details_screen.dart';
+import 'package:kickpass/screens/face_recognition_screen.dart';
+
 
 // Untuk mengakses Login Page, caranya:
 // 1. Logout dulu
@@ -109,27 +111,28 @@ class ProfileScreen extends StatelessWidget {
             ),
             Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(15),
               ),
-              elevation: 3,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => FaceDetectionScreen()),
-                  );
-                },
-                child: const ListTile(
-                  leading: Icon(Icons.camera_alt, color: Color(0xFF426BDE)),
-                  title: Text('Deteksi wajah'),
-                  subtitle: Text(
-                    'Aktifkan fitur deteksi wajah disini',
-                    style: TextStyle(fontSize: 12),
-                  ),
-                ),
-              ),
+            elevation: 3,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                MaterialPageRoute(
+              builder: (context) => FaceRecognitionScreen(),
             ),
+          );
+        },
+    child: const ListTile(
+      leading: Icon(Icons.camera_alt, color: Color(0xFF426BDE)),
+      title: Text('Deteksi Wajah'),
+      subtitle: Text(
+        'Belum Ada Data Face Recognition',
+        style: TextStyle(fontSize: 12),
+      ),
+    ),
+  ),
+),
             const SizedBox(height: 16),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
