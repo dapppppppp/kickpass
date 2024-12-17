@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kickpass/Auth/login_screen.dart';
 import 'package:kickpass/gatekeeper/scan_details_screen.dart';
 import 'package:kickpass/list/ticket_list.dart';
+import 'profile_gatekeeper.dart';
+import 'ticket_gatekeeper.dart';
+import 'CustomNavBar.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({super.key});
@@ -12,6 +15,22 @@ class ScanPage extends StatefulWidget {
 
 class _ScanPageState extends State<ScanPage> {
   List<Map<String, String>> filteredMatches = [];
+
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    if (index == 1) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const TicketScreen()),
+      );
+    } else if (index == 2) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const ProfileScreenGK()),
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -75,27 +94,6 @@ class _ScanPageState extends State<ScanPage> {
       appBar: AppBar(
         title: const Text('Scan Tiket', style: TextStyle(color: Colors.white)),
         backgroundColor: Color(0xFF426BDE),
-        actions: [
-          ElevatedButton.icon(
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-            onPressed: () {
-              // Tampilkan dialog konfirmasi logout
-              _showLogoutDialog(context);
-            },
-            icon: const Icon(Icons.logout),
-            label: const Text(
-              'Logout',
-              style: TextStyle(color: Color(0xFF426BDE)),
-            ),
-          ),
-          const SizedBox(width: 16)
-        ],
       ),
       body: Column(
         children: [
@@ -222,6 +220,10 @@ class _ScanPageState extends State<ScanPage> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: CustomBottomNavBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
