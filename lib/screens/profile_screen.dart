@@ -68,13 +68,20 @@ class ProfileScreen extends StatelessWidget {
               backgroundImage: AssetImage('assets/images/user_photo.png'),
             ),
             const SizedBox(height: 16),
-            Text(
-              user.name,
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              user.username,
-              style: TextStyle(color: Colors.grey),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  user.name,
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  user.username,
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ],
             ),
             SizedBox(height: 20),
             Card(

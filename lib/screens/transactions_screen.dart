@@ -122,12 +122,8 @@ class TransactionsScreen extends StatelessWidget {
 
                     // Nama pembeli
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          "Nama Pembeli",
-                          style: TextStyle(fontSize: 14),
-                        ),
                         Text(
                           user.name,
                           style: const TextStyle(fontSize: 14),
@@ -135,6 +131,7 @@ class TransactionsScreen extends StatelessWidget {
                       ],
                     ),
 
+                    Divider(),
                     const SizedBox(height: 4),
 
                     // Status tiket

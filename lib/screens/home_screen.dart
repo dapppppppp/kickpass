@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(12.0),
               color: Color(0xFF426BDE),
               child: Center(
                 child: Image.asset(
@@ -82,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                 crossAxisCount: 1,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
-                childAspectRatio: 5 / 2,
+                childAspectRatio: 3.5 / 2,
               ),
               itemBuilder: (BuildContext context, int index) {
                 final ticket = ticketList[index]; // Ambil data ticket
@@ -99,47 +99,49 @@ class HomeScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Card(
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
+                  child: SingleChildScrollView(
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        gradient: LinearGradient(
-                          colors: [Colors.blueGrey, Color(0xFF426BDE)],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
                       ),
-                      child: Column(
-                        children: [
-                          // Banner Image
-                          Container(
-                            width: double.infinity,
-                            height: 150.0, // Adjust the height of the banner
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              image: DecorationImage(
-                                image: NetworkImage(ticket["banner"] ?? ""),
-                                fit: BoxFit.cover,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          gradient: LinearGradient(
+                            colors: [Colors.blueGrey, Color(0xFF426BDE)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            // Banner Image
+                            Container(
+                              width: double.infinity,
+                              height: 150.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(ticket["banner"] ?? ""),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                              height:
-                                  8.0), // Add space between banner and title
-                          // Match Title
-                          Text(
-                            ticket["title"] ?? 'Pertandingan ${index + 1}',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                            const SizedBox(height: 8.0),
+                            // Match Title
+                            Text(
+                              ticket["title"] ?? 'Pertandingan ${index + 1}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

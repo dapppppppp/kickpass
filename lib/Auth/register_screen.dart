@@ -30,10 +30,11 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(height: 80),
               // Logo di tengah
               Image.asset(
                 'assets/images/Logo.png',
-                height: 50,
+                height: 100,
               ),
               const SizedBox(height: 40),
               // Form Register

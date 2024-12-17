@@ -48,15 +48,12 @@ class TransactionDetailsScreen extends StatelessWidget {
 
                   // Nama pembeli
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Nama Pembeli:",
-                        style: const TextStyle(fontSize: 14),
-                      ),
-                      Text(
-                        "${user.name}",
-                        style: const TextStyle(fontSize: 14),
+                        user.name,
+                        style: const TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -67,7 +64,7 @@ class TransactionDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "ID Transaksi:",
+                        "ID Transaksi",
                         style: const TextStyle(fontSize: 14),
                       ),
                       Text(
@@ -86,7 +83,7 @@ class TransactionDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Lokasi:",
+                        "Lokasi",
                         style: const TextStyle(fontSize: 14),
                       ),
                       Text(
@@ -102,7 +99,7 @@ class TransactionDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Tanggal:",
+                        "Tanggal",
                         style: const TextStyle(fontSize: 14),
                       ),
                       Text(
@@ -118,7 +115,7 @@ class TransactionDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Waktu:",
+                        "Waktu",
                         style: const TextStyle(fontSize: 14),
                       ),
                       Text(
@@ -134,7 +131,7 @@ class TransactionDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Kategori:",
+                        "Kategori",
                         style: const TextStyle(fontSize: 14),
                       ),
                       Text(
@@ -150,7 +147,7 @@ class TransactionDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Harga:",
+                        "Harga",
                         style: const TextStyle(fontSize: 14),
                       ),
                       Text(

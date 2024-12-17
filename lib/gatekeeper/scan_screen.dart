@@ -79,7 +79,7 @@ class _ScanPageState extends State<ScanPage> {
           ElevatedButton.icon(
             style: TextButton.styleFrom(
               backgroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 14),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -94,8 +94,7 @@ class _ScanPageState extends State<ScanPage> {
               style: TextStyle(color: Color(0xFF426BDE)),
             ),
           ),
-          const SizedBox(
-              width: 16), // Memberikan jarak antara tombol dan tepi kanan
+          const SizedBox(width: 16)
         ],
       ),
       body: Column(
