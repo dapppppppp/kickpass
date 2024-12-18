@@ -23,10 +23,10 @@ Kickpass adalah aplikasi mobile yang memungkinkan pengguna untuk membeli tiket p
 
 ###  Login User
 
-Username = muniff
-Password = password123
+* Username = muniff
+* Password = password123
 
 ###  Login Gatekeeper
 
-Username = penjaga
-Password = 12345
+* Username = penjaga
+* Password = 12345

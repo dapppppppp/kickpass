@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kickpass/Auth/Login_screen.dart';
-import 'package:kickpass/list/user_details.dart';
+import 'package:kickpass/list/gatekeeper_details.dart';
 import 'package:kickpass/screens/profile_details_screen.dart';
 import 'CustomNAvBar.dart'; 
 import 'scan_screen.dart';
@@ -94,7 +94,7 @@ class _ProfileScreenGKState extends State<ProfileScreenGK> {
                   textAlign: TextAlign.center,
                 ),
                 Text(
-                  user.username,
+                  gatekeeper.username,
                   style: TextStyle(color: Colors.grey),
                 ),
               ],
