@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kickpass/Auth/Login_screen.dart';
 import 'package:kickpass/list/gatekeeper_details.dart';
 import 'package:kickpass/screens/profile_details_screen.dart';
-import 'CustomNAvBar.dart'; 
+import 'package:kickpass/gatekeeper/report_page.dart';
+import 'CustomNavBar.dart';
 import 'scan_screen.dart';
 import 'ticket_gatekeeper.dart';
 
@@ -14,7 +15,7 @@ class ProfileScreenGK extends StatefulWidget {
 }
 
 class _ProfileScreenGKState extends State<ProfileScreenGK> {
-  int _selectedIndex = 2; 
+  int _selectedIndex = 2;
 
   // Fungsi untuk menampilkan dialog konfirmasi logout
   Future<void> _showLogoutDialog(BuildContext context) async {
@@ -100,6 +101,7 @@ class _ProfileScreenGKState extends State<ProfileScreenGK> {
               ],
             ),
             SizedBox(height: 20),
+            // Menu Setelan
             Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
@@ -124,6 +126,31 @@ class _ProfileScreenGKState extends State<ProfileScreenGK> {
               ),
             ),
             const SizedBox(height: 16),
+            // Menu Laporan
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              elevation: 3,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ReportScreen()),
+                  );
+                },
+                child: const ListTile(
+                  leading: Icon(Icons.bar_chart, color: Color(0xFF426BDE)),
+                  title: Text('Laporan'),
+                  subtitle: Text(
+                    'Lihat laporan tiket sesuai pertandingan',
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            // Tombol Logout
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 239, 77, 65),
